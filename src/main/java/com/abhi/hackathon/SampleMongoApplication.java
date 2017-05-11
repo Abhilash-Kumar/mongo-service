@@ -11,13 +11,17 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class SampleMongoApplication implements CommandLineRunner {
 
 	@Autowired
-	private CustomerRepository repository;
+	private ClassifiedDataReposiotry classifiedRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		this.repository.deleteAll();
+		
+		System.out.println("Total data classified data "+this.classifiedRepository.findAll().size());
+		
+		
+//		this.repository.deleteAll();
 
-		// save a couple of customers
+	/*	// save a couple of customers
 		this.repository.save(new Customer("Alice", "Smith"));
 		this.repository.save(new Customer("Bob", "Smith"));
 
@@ -38,7 +42,7 @@ public class SampleMongoApplication implements CommandLineRunner {
 		System.out.println("--------------------------------");
 		for (Customer customer : this.repository.findByLastName("Smith")) {
 			System.out.println(customer);
-		}
+		}*/
 	}
 
 	public static void main(String[] args) throws Exception {
