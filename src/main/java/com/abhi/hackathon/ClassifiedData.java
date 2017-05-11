@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class ClassifiedData {
 
 	@Id
-	private String id;
+	private String Id;
 
 	private Date tweet_created_at;
 
@@ -25,23 +25,27 @@ public class ClassifiedData {
 	/**
 	 * @return the _id
 	 */
-	public String get_id() {
-		return id;
-	}
-
-	/**
-	 * @param _id
-	 *            the _id to set
-	 */
-	public void set_id(String _id) {
-		this.id = _id;
-	}
+	
 
 	/**
 	 * @return the tweet_created_at
 	 */
 	public Date getTweet_created_at() {
 		return tweet_created_at;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return Id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		Id = id;
 	}
 
 	/**
@@ -104,7 +108,7 @@ public class ClassifiedData {
 	 */
 	@Override
 	public String toString() {
-		return "ClassifiedData [id=" + id + ", tweet_created_at="
+		return "ClassifiedData [id=" + Id + ", tweet_created_at="
 				+ tweet_created_at + ", sentiment=" + sentiment
 				+ ", tweet_text=" + tweet_text + ", classificationType="
 				+ classificationType + "]";

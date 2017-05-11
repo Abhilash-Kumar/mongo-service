@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
@@ -18,7 +22,16 @@ public class SampleMongoApplication implements CommandLineRunner {
 		
 		System.out.println("Total data classified data "+this.classifiedRepository.findAll().size());
 		
-		
+		ApplicationContext ctx =
+                new AnnotationConfigApplicationContext(SpringMongoConfig.class);
+	MongoOperations mongoOperation =
+                (MongoOperations) ctx.getBean("mongoTemplate");
+	// find
+			Query findUserQuery = new Query();
+//			findUserQuery.addCriteria(Criteria.where("ic").is("1000"));
+			ClassifiedData userA1 = mongoOperation.findOne(findUserQuery, ClassifiedData.class, "twitter_classified_data");
+			System.out.println(userA1);
+
 //		this.repository.deleteAll();
 
 	/*	// save a couple of customers
